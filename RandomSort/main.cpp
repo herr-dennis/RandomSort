@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <random>
+#include <chrono>
 
 
 bool proof(const std::vector<int> &arr);
@@ -10,13 +11,20 @@ int  main(){
 
 
 	std::vector<int> arr = { 2,3,48,14,1,4,23131,5,15155,552760};
-
+	size_t n = arr.size();
+	auto start = std::chrono::high_resolution_clock::now();
 	if(rnd_sort(arr)) {
+		auto end = std::chrono::high_resolution_clock::now();
 		std::cout << "Sorted array: ";
 		for (const auto& elem : arr) {
 			std::cout << elem << " ";
 		}
 		std::cout << std::endl;
+
+		std::chrono::duration<double> duration = end - start;
+		std::cout << "Time taken: " << duration.count() << " seconds" << std::endl;
+		std::cout << "Bei n mit " << " " << n << std::endl;
+
 	}
 
 	return 0;
